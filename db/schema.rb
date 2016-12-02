@@ -10,10 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161202221518) do
+ActiveRecord::Schema.define(version: 20161202234949) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "orders", force: :cascade do |t|
+    t.integer  "production_id"
+    t.integer  "user_id"
+    t.integer  "quantity"
+    t.date     "delivery_date_at"
+    t.boolean  "delivery"
+    t.string   "status"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["production_id"], name: "index_orders_on_production_id", using: :btree
+    t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
+  end
+
+  create_table "productions", force: :cascade do |t|
+    t.integer  "product_id"
+    t.integer  "user_id"
+    t.date     "prod_date_at"
+    t.date     "dispo_date_at"
+    t.integer  "quantity"
+    t.integer  "price"
+    t.string   "unit"
+    t.string   "status"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["product_id"], name: "index_productions_on_product_id", using: :btree
+    t.index ["user_id"], name: "index_productions_on_user_id", using: :btree
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -28,8 +62,19 @@ ActiveRecord::Schema.define(version: 20161202221518) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "address"
+    t.string   "farm_description"
+    t.boolean  "delivery"
+    t.text     "delivery_conditions"
+    t.integer  "delivery_range"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "orders", "productions"
+  add_foreign_key "orders", "users"
+  add_foreign_key "productions", "products"
+  add_foreign_key "productions", "users"
 end

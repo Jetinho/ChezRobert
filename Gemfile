@@ -19,6 +19,12 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 
+group :development do
+  # gem "quiet_assets"
+  gem "faker"
+  gem "letter_opener"
+end
+
 group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'
