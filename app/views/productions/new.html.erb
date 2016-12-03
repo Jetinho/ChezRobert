@@ -1,2 +1,28 @@
-<h1>Productions#new</h1>
-<p>Find me in app/views/productions/new.html.erb</p>
+<h1>Mettre en vente un nouvel arrivage !</h1>
+<!-- nouvelle récolte ? -->
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= simple_form_for(@production) do |f| %>
+
+      <div class="">
+        <h2 class="text-center">Qu'avez-vous à mettre en vente ?</h2>
+        <br>
+        <%= f.input :name, collection: Production::PRODUCT, prompt: "Quel produit ?" %>
+        <br>
+        <%= f.input :quantity, placeholder: "Ex.: 500", :input_html => { :class => "input-lg" } %>
+        <br>
+        <%= f.input :unit, collection: Production::UNIT, prompt: "Quelle unité ?" %>
+        <br>
+        <%= f.input :price, placeholder: "Ex.: 500€", :input_html => { :class => "input-lg" } %> €
+        <br>
+        <%= f.input :price_unit, collection: Production::PRICE_UNIT, prompt: "Quelle unité de prix ?" %>
+<!-- date prod
+dispo date
+pick-up date -->
+      </div>
+      <div class="text-center">
+        <%= f.button :submit %>
+      </div>
+    <% end %>
+  </div>
+</div>
