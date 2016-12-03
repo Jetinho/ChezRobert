@@ -1,2 +1,19 @@
-<h1>Orders#new</h1>
-<p>Find me in app/views/orders/new.html.erb</p>
+<h1 class="text-center">Commande</h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= simple_form_for([@production, @order]) do |f| %>
+
+      <div class="">
+        <h2 class="text-center">Réservez vos <%= @production.name.pluralize %> à <%= @production.user.email %> :</h2>
+        <%= f.input :quantity, placeholder: "Ex.: 500", :input_html => { :class => "input-lg" } %> <%= @production.unit %>
+          </p>
+          à <%= @production.price %> <%= @production.price_unit %> €
+          </p>
+<!-- date de livraison / pick-up -->
+      </div>
+      <div class="text-center">
+        <%= f.button :submit %>
+      </div>
+    <% end %>
+  </div>
+</div>

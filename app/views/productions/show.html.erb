@@ -1,2 +1,35 @@
-<h1>Productions#show</h1>
-<p>Find me in app/views/productions/show.html.erb</p>
+<p>
+  Cargaison de <%= @production.quantity %>
+  <%= @production.unit %>
+  de <%= @production.name.pluralize %>
+  disponible !
+</p>
+<!-- conditions à enlever ensuite car les champs seront obligatoire pour poster une offre -->
+<% if @production.user.first_name? && @production.user.last_name? %>
+  <p>
+    Mise en vente par
+  </p>
+  <!-- pourquoi ça marche pas ???? -->
+  <p>
+    <%= link_to user_path(@production.user) do %>
+      <%= @production.user.first_name + " " + @production.user.first_name %>
+    <% end %>
+  </p>
+    à <%= @production.price %> <%= @production.price_unit %> €
+<% else %>
+  <p>
+    Mise en vente par <%= @production.user.email %>
+    à <%= @production.price %> <%= @production.price_unit %>
+  </p>
+<% end %>
+<% if @production.user.address? %>
+  <p>
+    A réserver et à venir chercher à la ferme à l'adresse suivante :
+    <%= @production.user.adress %>
+  </p>
+<% end %>
+<%= link_to "New Order", new_production_order_path(@production) %>
+<%= link_to "Production Index", productions_path %>
+
+<!-- si c'est ma production -->
+<%= link_to "Orders Index", production_orders_path(@production) %>

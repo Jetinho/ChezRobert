@@ -1,2 +1,24 @@
 <h1>Productions#index</h1>
 <p>Find me in app/views/productions/index.html.erb</p>
+<h1>Produits disponibles</h1>
+<ul>
+<%= @productions.each do |prod| %>
+  <%= link_to production_path(prod) do %>
+    <li>
+    <!-- Photo si photo -->
+      <div>
+        <h3>
+          <%= prod.name.pluralize %> de <%= prod.user.email %>
+        </h3>
+        <div>
+          <%= prod.price %> €
+          <%= prod.price_unit %>
+          <% if prod.user.address? %>
+            <%= prod.user.address %>
+          <% end %>
+        </div>
+      </div>
+    </li>
+  <% end %>
+<% end %>
+</ul>
