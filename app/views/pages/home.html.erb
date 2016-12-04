@@ -12,8 +12,8 @@
   <div class="row">
     <% @productions.last(4).each do |prod| %>
       <div class="col-sm-3">
-        <% if @prod.photo? %>
-         <%= cl_image_tag @prod.photo.path, width: 200, height: 300, crop: :fill %>
+        <% if prod.photo? %>
+         <%= cl_image_tag prod.photo.path, width: 200, height: 300, crop: :fill %>
         <% end %>
         <%= prod.quantity %> <%= prod.unit %> de
         <%= prod.name %> à
