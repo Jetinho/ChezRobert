@@ -1,4 +1,5 @@
 class Production < ApplicationRecord
+  has_attachment :photo
   belongs_to :user
   has_many :orders
   validates :name, :quantity, :unit, :price, :price_unit, presence: true
