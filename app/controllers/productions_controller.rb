@@ -34,7 +34,7 @@ class ProductionsController < ApplicationController
   private
 
   def production_params
-    params.require(:production).permit(:name, :quantity, :unit, :price, :price_unit)
+    params.require(:production).permit(:name, :quantity, :unit, :price, :price_unit, :photo)
   end
 
   def set_production

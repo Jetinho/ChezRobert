@@ -16,6 +16,8 @@
         <%= f.input :price, placeholder: "Ex.: 500€", :input_html => { :class => "input-lg" } %> €
         <br>
         <%= f.input :price_unit, collection: Production::PRICE_UNIT, prompt: "Quelle unité de prix ?" %>
+        <br>
+        <%= f.input :photo, as: :attachinary %>
 <!-- date prod
 dispo date
 pick-up date -->
