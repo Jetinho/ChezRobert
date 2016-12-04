@@ -1,9 +1,22 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1 class="text-center">Chez Robert !</h1>
 
-Chez Robert !
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <div class="text-center">
+        <%= link_to "Production Index", productions_path %> |
+        <%= link_to "New Production", new_production_path %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <% @productions.last(4).each do |prod| %>
+      <div class="col-sm-3">
+        <%= prod.quantity %> <%= prod.unit %> de
+        <%= prod.name %> à
+        <%= prod.price %> <%= prod.price_unit %>
+      </div>
+    <% end %>
+  </div>
+</div>
 
-
-<%= link_to "Production Index", productions_path %>
-
-<%= link_to "New Production", new_production_path %>
