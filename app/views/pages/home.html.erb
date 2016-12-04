@@ -12,9 +12,9 @@
   <div class="row">
     <% @productions.last(4).each do |prod| %>
       <div class="col-sm-3">
-      <%= prod.quantity %> <%= prod.unit %> de
-      <%= prod.name %> à
-      <%= prod.price %> <%= prod.price_unit %>
+        <%= prod.quantity %> <%= prod.unit %> de
+        <%= prod.name %> à
+        <%= prod.price %> <%= prod.price_unit %>
       </div>
     <% end %>
   </div>
