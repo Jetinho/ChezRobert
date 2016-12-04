@@ -13,11 +13,39 @@
     <% @productions.last(4).each do |prod| %>
       <div class="col-sm-3">
         <% if prod.photo? %>
-         <%= cl_image_tag prod.photo.path, width: 200, height: 300, crop: :fill %>
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+     url('<%= cl_image_path prod.photo.path, height: 300, width: 400, crop: :fill %>')">
+            <% if prod.user.photo? %>
+              <div class="card-user">
+                <%= cl_image_tag avatar_image(prod.user), class: "avatar-bordered" %>
+              </div>
+            <% end %>
+            <div class="card-title">
+              <h2><%= prod.name.pluralize %></h2>
+            </div>
+            <div class="card-description">
+              <%= prod.quantity %> <%= prod.unit %> à
+              <%= prod.price %> € <%= prod.price_unit %>
+            </div>
+          </div>
+        <% else %>
+         <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+     url('<%= asset_url 'tomates.jpg', height: 300, width: 400, crop: :fill %>')">
+            <% if prod.user.photo? %>
+              <div class="card-user">
+                <%= cl_image_tag avatar_image(prod.user), class: "avatar-bordered" %>
+              </div>
+            <% end %>
+            <div class="card-title">
+              <h2><%= prod.name.pluralize %></h2>
+            </div>
+            <div class="card-description">
+              <%= prod.quantity %> <%= prod.unit %> à
+              <%= prod.price %> € <%= prod.price_unit %>
+            </div>
+          </div>
         <% end %>
-        <%= prod.quantity %> <%= prod.unit %> de
-        <%= prod.name %> à
-        <%= prod.price %> <%= prod.price_unit %>
+
       </div>
     <% end %>
   </div>
