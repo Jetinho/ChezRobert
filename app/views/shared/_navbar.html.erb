@@ -53,7 +53,7 @@
     <% else %>
 
       <!-- Login text link -->
-      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Login", new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
 
     <% end %>
 
@@ -67,8 +67,12 @@
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
         <li><%= link_to "Accueil", root_path %></li>
-        <li><%= link_to "Mon profil", user_path(current_user) %></li>
-        <li><%= link_to "Deconnexion", destroy_user_session_path %></li>
+        <% if user_signed_in? %>
+          <li><%= link_to "Mon profil", user_path(current_user) %></li>
+          <li><%= link_to "Deconnexion", destroy_user_session_path %></li>
+        <% else %>
+          <li><%= link_to "Login", new_user_session_path %></li>
+        <% end %>
       </ul>
     </div>
   </div>
