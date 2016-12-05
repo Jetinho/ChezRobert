@@ -12,7 +12,7 @@
   <!-- pourquoi ça marche pas ???? -->
   <p>
     <%= link_to user_path(@production.user) do %>
-      <%= @production.user.first_name + " " + @production.user.first_name %>
+      <%= @production.user.first_name + " " + @production.user.last_name %>
     <% end %>
   </p>
     à <%= @production.price %> <%= @production.price_unit %> €
