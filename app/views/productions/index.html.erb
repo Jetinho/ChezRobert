@@ -1,6 +1,6 @@
 <h1>Produits disponibles</h1>
 <ul>
-<%= @productions.each do |prod| %>
+<% @productions.each do |prod| %>
   <%= link_to production_path(prod) do %>
     <li>
     <!-- Photo si photo -->
