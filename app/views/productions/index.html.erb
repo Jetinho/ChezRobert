@@ -20,6 +20,6 @@
   <% end %>
 <% end %>
 </ul>
-<% if current_user.producer? %>
+<% if user_signed_in? && current_user.producer? %>
   <%= link_to "New production", new_production_path %>
 <% end %>

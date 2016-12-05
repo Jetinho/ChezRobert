@@ -12,7 +12,7 @@
   <!-- pourquoi ça marche pas ???? -->
   <p>
     <%= link_to user_path(@production.user) do %>
-      <%= @production.user.first_name + " " + @production.user.first_name %>
+      <%= @production.user.first_name + " " + @production.user.last_name %>
     <% end %>
   </p>
     à <%= @production.price %> <%= @production.price_unit %> €
@@ -25,7 +25,7 @@
 <% if @production.user.address? %>
   <p>
     A réserver et à venir chercher à la ferme à l'adresse suivante :
-    <%= @production.user.adress %>
+    <%= @production.user.address %>
   </p>
 <% end %>
 <%= link_to "New Order", new_production_order_path(@production) %>

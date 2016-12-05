@@ -1,5 +1,7 @@
 class ProductionsController < ApplicationController
   before_action :set_production, only: [:show, :edit, :destroy]
+  skip_before_action :authenticate_user!, only: [:show, :index]
+
   def index
     @productions = Production.all
   end

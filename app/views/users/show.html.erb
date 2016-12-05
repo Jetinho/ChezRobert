@@ -1,2 +1,23 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div>
+  <br></br>
+  <div class="row">
+    <div class="col-sm-3 text-center">
+
+      <% if @user.photo? %>
+        <%= cl_image_tag avatar_image(@user), crop: :fit, class: "avatar-large" %>
+      <% else %>
+        <%= image_tag "default_avatar.png", class: "avatar-large" %>
+      <% end %>
+    </div>
+    <div class="col-sm-9">
+      <h3><%= @user.email %></h3>
+      <p><%= @user.first_name %> <%=@user.last_name %></p>
+      <p>
+      <% if user_signed_in? && current_user == @user%>
+        <%= link_to 'Edit profile', edit_user_path(@user) %> |
+        <%= link_to 'Edit or cancel account', edit_user_registration_path %>
+      <% end %>
+      </p>
+    </div>
+  </div>
+</div>

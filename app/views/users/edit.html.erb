@@ -1,2 +1,29 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<div>
+  <%= simple_form_for(@user) do |f| %>
+    <%= f.input :first_name, value: @user.first_name, placeholder: 'Prénom' %>
+    <br>
+    <%= f.input :last_name, value: @user.last_name, placeholder: 'Nom' %>
+    <br>
+    <%= f.input :photo, as: :attachinary %>
+    <br>
+    <%= f.input :address, value: @user.address, placeholder: 'Adresse' %>
+    <br>
+    <%= f.input :producer %>
+    <br>
+    <%= f.input :farm_description, value: @user.farm_description, placeholder: 'Nom de la ferme' %>
+    <br>
+    <%= f.input :farm_photo, as: :attachinary %>
+    <br>
+    <%= f.input :delivery %>
+    <br>
+    <%= f.input :delivery_range, value: @user.delivery_range, placeholder: 'Distance de livraison' %>
+    <br>
+    <%= f.input :delivery_conditions, value: @user.delivery_conditions, placeholder: 'Conditions de livraison' %>
+    <br>
+    <%= f.button :submit %>
+  <% end %>
+  <hr>
+  <p>
+  <%= link_to 'Retour vers mon profil', user_path(@user) %>
+  </p>
+</div>
